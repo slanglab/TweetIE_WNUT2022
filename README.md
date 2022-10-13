@@ -1,4 +1,4 @@
-This will be the repository for the software supporting the paper [*Cross-Dialect Social Media Dependency Parsing for Social Scientific Entity Attribute Analysis*](https://aclanthology.org/2022.wnut-1.4/) by [Chloe Eggleston](https://chloes.computer/) (@nu11us) and [Brendan O'Connor](http://brenocon.com/) (@brendano), Proceedings of the Workshop on Noisy User-generated Text (W-NUT) at COLING 2022.
+This will be the repository for the software supporting the paper [*Cross-Dialect Social Media Dependency Parsing for Social Scientific Entity Attribute Analysis*](https://aclanthology.org/2022.wnut-1.4/) by [Chloe Eggleston](https://chloes.computer/) ([@nu11us](https://github.com/nu11us) and [Brendan O'Connor](http://brenocon.com/) ([@brendano](https://github.com/brendano)), Proceedings of the Workshop on Noisy User-generated Text (W-NUT) at COLING 2022.
 
 
 A copy of the paper is included here; see also the [ACL Anthology](https://aclanthology.org/2022.wnut-1.4/). Bibtex:
