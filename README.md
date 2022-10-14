@@ -36,4 +36,4 @@ Paragraph 3 of Section 3.4 discusses the construction of the Tweebank v2 AAE and
 
 All per-dialect accuracy results and disparities reported in the paper were evaluated on the above sets of messages.
 
-The published text for this paragraph describes a different splitting method to partition the test set according to whether the AAE or MAE proportion is higher; this criterion results in a supersets of the above selections, since the demographic model has four classes.
+The published text for this paragraph describes a different splitting method to partition the test set according to whether the AAE or MAE proportion is higher; this criterion results in supersets of the above selections, since the demographic model has four classes and one of the other two sometimes has the largest proportion.
