@@ -23,4 +23,17 @@ A copy of the paper is included here; see also the [ACL Anthology](https://aclan
 
 # Paper errata
 
-[todo]
+Paragraph 3 of Section 3.4 discusses the construction of the Tweebank v2 AAE and MAE splits of the test set.  It should be changed to the following:
+
+> In order to measure disparity on the fine-tuning source, we measure the
+> relative error of both the TwitterAAE dependencies and use the Twitter-AAE
+> demographic dialect inference model to extract dialect-specific subsets of
+> the Tweebank v2 test set based on whether the largest demographic proportion
+> was MAE or AAE, yielding 672 and 163 tweets respectively (the remaining 366
+> tweets belong to neither subset).  We also analyze the TwitterAAE
+> dependencies in the same way, which provides 250 tweets of both MAE and AAE
+> respectively.
+
+All per-dialect accuracy results and disparities reported in the paper were evaluated on the above sets of messages.
+
+The published text for this paragraph describes a different splitting method to partition the test set according to whether the AAE or MAE proportion is higher; this criterion results in a supersets of the above selections, since the demographic model has four classes.
