@@ -20,6 +20,9 @@ A copy of the paper is included here; see also the [ACL Anthology](https://aclan
     abstract = "In this paper, we utilize recent advancements in social media natural language processing to obtain state-of-the-art syntactic dependency parsing results for social media English. We observe performance gains of 3.4 UAS and 4.0 LAS against the previous state-of-the-art as well as less disparity between African-American and Mainstream American English dialects. We demonstrate the computational social scientific utility of this parser for the task of socially embedded entity attribute analysis: for a specified entity, derive its semantic relationships from parses{'} rich syntax, and accumulate and compare them across social variables. We conduct a case study on politicized views of U.S. official Anthony Fauci during the COVID-19 pandemic.",
 }
 ```
+# Pretrained Models
+
+Pretrained SuPar models are available on the Huggingface Model Hub, with [umassnlp/supar-bertweet](https://huggingface.co/umassnlp/supar-bertweet) being the full model and and [umassnlp/super-bertweet-eval](https://huggingface.co/umassnlp/supar-bertweet-eval) being the model without [relational subtypes](https://universaldependencies.org/ext-dep-index.html) for use in the CoNLL evaluation scripts.
 
 # Paper errata
 
