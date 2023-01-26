@@ -22,7 +22,7 @@ A copy of the paper is included here; see also the [ACL Anthology](https://aclan
 ```
 # Pretrained Models
 
-Pretrained SuPar models are available on the Huggingface Model Hub, with [umassnlp/supar-bertweet](https://huggingface.co/umassnlp/supar-bertweet) being the full model and and [umassnlp/super-bertweet-eval](https://huggingface.co/umassnlp/supar-bertweet-eval) being the model without [relational subtypes](https://universaldependencies.org/ext-dep-index.html) for use in the CoNLL evaluation scripts.
+Pretrained SuPar models are available on the Huggingface Model Hub, with [umassnlp/supar-bertweet](https://huggingface.co/umassnlp/supar-bertweet) being the full model and and [umassnlp/super-bertweet-eval](https://huggingface.co/umassnlp/supar-bertweet-eval) being the model without [relational subtypes](https://universaldependencies.org/ext-dep-index.html) for use in the [CoNLL evaluation scripts](https://universaldependencies.org/conll18/evaluation.html).
 
 # Paper errata
 
