@@ -1,6 +1,6 @@
 # Overview
 
-This will be the repository for the software supporting the paper [*Cross-Dialect Social Media Dependency Parsing for Social Scientific Entity Attribute Analysis*](https://aclanthology.org/2022.wnut-1.4/) by [Chloe Eggleston](https://chloes.computer/) ([@nu11us](https://github.com/nu11us)) and [Brendan O'Connor](http://brenocon.com/) ([@brendano](https://github.com/brendano)), Proceedings of the Workshop on Noisy User-generated Text (W-NUT) at COLING 2022.
+This is the repository for the software supporting the paper [*Cross-Dialect Social Media Dependency Parsing for Social Scientific Entity Attribute Analysis*](https://aclanthology.org/2022.wnut-1.4/) by [Chloe Eggleston](https://chloes.computer/) ([@nu11us](https://github.com/nu11us)) and [Brendan O'Connor](http://brenocon.com/) ([@brendano](https://github.com/brendano)), Proceedings of the Workshop on Noisy User-generated Text (W-NUT) at COLING 2022.
 
 
 A copy of the paper is included here; see also the [ACL Anthology](https://aclanthology.org/2022.wnut-1.4/). Bibtex:
@@ -23,6 +23,27 @@ A copy of the paper is included here; see also the [ACL Anthology](https://aclan
 # Pretrained Models
 
 Pretrained SuPar models are available on the Huggingface Model Hub, with [umassnlp/supar-bertweet](https://huggingface.co/umassnlp/supar-bertweet) being the full model and and [umassnlp/super-bertweet-eval](https://huggingface.co/umassnlp/supar-bertweet-eval) being the model without [relational subtypes](https://universaldependencies.org/ext-dep-index.html) for use in the [CoNLL evaluation scripts](https://universaldependencies.org/conll18/evaluation.html).
+
+# TweetIE Pipeline
+
+In order to use TweetIE to analyze a corpus, you first need the following:
+- Universal dependency parses, formatted in [CoNLL-U format](https://universaldependencies.org/format.html)
+- Named entity recognition tags, following [CoNLL 2003 format](https://aclanthology.org/W03-0419/)
+- Part-of-speech tags, either as [UPOS](https://universaldependencies.org/u/pos/index.html) tags in the CoNLL-U, or in a seperate file formatted in the same manner as the NER tags
+
+The pipeline takes the following arguments:
+- `conll_file` / `ner_conll` / `pos_conll` - UD/NER/POS parse file (POS optional if used in dependency parse file)
+- `lname` - Name of target, can use last name if you want name expanded to first name
+- `assumed_gender` - 'masc'/'fem'/'neuter' for personal pronoun coreference, use None if you wish to disable it
+- `filter_stops` - Enable/disable stopword filtering
+- `stoplist` - Stopword filter list (from NLTK, defaults to "english")
+- `lemmatize` - Enable/disable lemmatization
+- `lemmatizer` - NLTK lemmatizer (defaults to WordNetLemmatizer)
+- `assume_intersective_adj` - Distribute adjectives intersectively (defaults to True)
+- `assume_intersective_title` - Distributes fixed appositions intersectively (defaults to False)
+- `dep_prefixes` / `ner_prefixes` / `pos_prefixes` - number of commented out line per entry in said files
+
+The pipeline then can be used with the run(entry_num) on the specific entry in the corpus, and returns an array of tuples of IS_A/HAS_A/AS_AGENT/AS_PATIENT/AS_CONJUNCT and the token indices. 
 
 # Paper errata
 

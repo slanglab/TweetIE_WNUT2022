@@ -11,7 +11,7 @@ from nltk.corpus import stopwords
 class Pipeline:
     def __init__(self, conll_file, ner_conll=None, pos_conll=None, lname='fauci', assumed_gender='masc', filter_stops=True, stoplist=None, lemmatize=True, lemmatizer=None, assume_intersective_adj=True, assume_intersective_title=False, dep_prefixes=9, ner_prefixes=0, pos_prefixes=0):
         # Config, inputs
-        self.lname = lname
+        self.lname = lname.lower()
         self.assumed_gender = assumed_gender
         self.filter_stops = filter_stops
         if stoplist == None:
@@ -154,6 +154,8 @@ class Pipeline:
 
     # Strict high precision rule-based gendered pronoun coreference.
     def process_coref(self,enc,d):
+        if self.assumed_gender == None:
+            return enc
         lines, tokens, postags, nertags, deprels, parents, nums = self.get_dep_info(d)
         attributed_coref = set()
         new_coref = []
@@ -237,7 +239,7 @@ class Pipeline:
                 enc[f]['all_conjs'] += span
         return enc
 
-    # Placeholder
+    # Get both "incoming" and "outgoing" appositions
     def process_appositions(self, enc, d):
         lines, tokens, postags, nertags, deprels, parents, nums = self.get_dep_info(d)
         for f in enc:
@@ -248,7 +250,7 @@ class Pipeline:
             enc[f]['appos_roots'] = sorted(list(set(fin)))
         return enc
 
-    # Placeholder
+    # Get "titles", aka fixed (or close) appositions like President Obama or state senator Paul Mnuchin
     def process_titles(self, enc, d):
         lines, tokens, postags, nertags, deprels, parents, nums = self.get_dep_info(d)
         for f in enc:
@@ -262,7 +264,7 @@ class Pipeline:
                                 conjucts = [ii for ii in nums if parents[ii]==i and deprels[ii]=='conj']
         return enc
 
-    # Placeholder
+    # Get adjectives modifying targets
     def process_amods(self, enc, d):
         lines, tokens, postags, nertags, deprels, parents, nums = self.get_dep_info(d)
         for f in enc:
@@ -274,7 +276,7 @@ class Pipeline:
                         conjucts = [ii for ii in nums if parents[ii]==i and deprels[ii]=='conj']
         return enc
 
-    # Placeholder
+    # Get the "predicates" of targets (as in predicate adjectives, predicate nominatives, active verbs done by a target, and passive verbs done to a target)
     def process_predicates(self, enc, d):
         lines, tokens, postags, nertags, deprels, parents, nums = self.get_dep_info(d)
         for f in enc:
@@ -321,7 +323,7 @@ class Pipeline:
                                     enc[f]['used_obl'].append(i)
         return enc
 
-    # Placeholder
+    # Get nominatives that are possessed by a target
     def process_possesives(self, enc, d):
         lines, tokens, postags, nertags, deprels, parents, nums = self.get_dep_info(d)
         for f in enc:
@@ -334,7 +336,7 @@ class Pipeline:
                             conjucts = [ii for ii in nums if parents[ii]==j and deprels[ii]=='conj']
         return enc
 
-    # Placeholder
+    # Get direct objects and adjuncts paired with prepositions
     def process_arguments(self, enc, d):
         lines, tokens, postags, nertags, deprels, parents, nums = self.get_dep_info(d)
         for f in enc:
@@ -366,7 +368,7 @@ class Pipeline:
                             enc[f]['objs'].append((' '.join(verb_seqs),verb_seq))                    
         return enc
 
-    # Placeholder
+    # Negation, summing up, etc
     def post_process(self, enc, d):
         lines, tokens, postags, nertags, deprels, parents, nums = self.get_dep_info(d)
         negs = []
